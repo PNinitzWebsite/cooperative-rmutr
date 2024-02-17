@@ -1,0 +1,152 @@
+
+
+.input-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(240, 240, 240, 0.7);
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(217, 105, 105, 0.9);
+    animation: fadeIn 1s ease forwards;
+    margin-bottom: 5px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-1px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+.input1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    border: 1px solid rgb(207, 83, 95); /* เพิ่มเส้นขอบสีแดง */
+    font-size: 1.1rem;
+}
+
+
+.input2 {
+    width: 100%;
+    margin-bottom: 15px; /* กำหนดระยะห่างระหว่างช่องป้อนข้อมูล */
+    border-radius: 8px;
+    border: 1px solid rgb(207, 83, 95); /* เพิ่มเส้นขอบสีแดง */
+    height: 100px; /* กำหนดความสูงของกล่องข้อความ */
+    text-indent: 20px; 
+    padding-top: 10px; /* ปรับระยะห่างด้านบนของข้อความ */
+    text-indent: 0;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    
+}
+
+
+
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+
+input[type="file"] {
+    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่างของ input */
+    
+}
+
+button[type="submit"] {
+    margin-top: 10px; /* เพิ่มระยะห่างด้านบนของ button */
+    
+}
+
+
+/* CSS สำหรับ Desktop */
+.table-container {
+    overflow-x: auto; /* เพื่อให้สามารถเลื่อนตารางได้หากขนาดของตารางมากเกินไป */
+}
+
+table {
+    width: 100%; /* ตารางจะขยายตามขนาดของคอนเทนเนอร์ */
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* CSS สำหรับ Mobile */
+@media only screen and (max-width: 600px) {
+    table {
+        border: 0; /* ลบเส้นขอบของตาราง */
+    }
+
+    table thead {
+        display: none; /* ซ่อนส่วนหัวของตาราง */
+    }
+
+    table, table tbody, table tr, table td {
+        display: block; /* แสดงตารางและแถวในรูปแบบ block */
+    }
+
+    table tr {
+        margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างแถว */
+        border: 1px solid #ddd; /* เพิ่มเส้นขอบระหว่างแถว */
+    }
+
+    table td {
+        border-bottom: 0; /* ลบเส้นขอบด้านล่างของแต่ละเซลล์ */
+    }
+
+    table td:before {
+        content: attr(data-label); /* ให้แสดงเนื้อหาที่มี attribute data-label */
+        font-weight: bold;
+        display: inline-block;
+        width: 50%;
+        margin-right: 10px;
+    }
+}
+
+
+.image-container {
+    overflow: hidden;
+    position: relative!important;
+    width: 100%; /* ปรับขนาดตามที่ต้องการ */
+    height: 100%; /* ปรับขนาดตามที่ต้องการ */
+}
+
+.image-container img {
+    transition: transform 0.3s ease;
+    z-index: 90;
+    position: relative!important;
+}
+
+.image-container:hover img {
+    z-index: 99;
+    transform: scale(5); /* ปรับขนาดตามที่ต้องการ */
+}

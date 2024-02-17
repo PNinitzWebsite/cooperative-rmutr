@@ -3,15 +3,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="CooperativeRMUTR">
     <meta name="generator" content="Hugo 0.84.0">
     <title>Sign Up | Cooperative RMUTR</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
-    
 
     <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -61,6 +57,10 @@
         <% } %>
     <% } %>
 
+    <div class="form-floating">
+      <input type="studentID" name="studentID" value="<%= studentID %>" class="form-control" id="floatingInput" placeholder="StudentID">
+      <label for="floatingInput">StudentID</label>
+    </div>
     <div class="form-floating">
       <input type="username" name="username" value="<%= username %>" class="form-control" id="floatingInput" placeholder="Username">
       <label for="floatingInput">Username</label>

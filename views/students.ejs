@@ -1,0 +1,176 @@
+<!-- students.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Student Data</title>
+    <!-- css demax -->
+    <link href="/css/Ahtml.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>ข้อมูลสหกิจศึกษา RMUTR</h1>
+
+    <!-- Not Approved Students -->
+    <h2>ไม่อนุญาต</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ชื่อสถานที่ฝึกงาน</th>
+                <th>ที่อยู่สถานที่ฝึกงาน</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>รหัสประจำตัวนักศึกษา</th>
+                <th>เบอร์โทรศัพท์</th>
+                <th>หน้าที่การทำงานของนักศึกษา</th>
+                <th>หลักฐานการทำงาน (ไฟล์ภาพ)</th>
+                <th>วันและเวลาทำการ</th>
+                <th>ดำเนินการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(student => { %>
+                <% if (student.isApproved == "false") { %>
+                    <tr>
+                        <td><%= student.companyName %></td>
+                        <td><%= student.companyAddress %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.lastName %></td>
+                        <td><%= student.studentID %></td>
+                        <td><%= student.phoneNumber %></td>
+                        <td><%= student.jobDetails %></td>
+                        <td>
+                            <a class="image-container" href="<%= student.image %>">
+                                <img width="100" class="student-image" src="<%= student.image %>" alt="Student Image">
+                            </a>
+                        </td>
+                        <td><%= student.dateTime %></td>
+                        <td>
+                            <center style="color: whitesmoke; background-color: red;">ไม่อนุญาต</center>
+                           <form action="/students/<%= student._id %>/approve" method="POST" style="display: inline;">
+                            <input type="hidden" name="isApproved" value="true">
+                            
+                            <button type="submit" style="background-color: green; color: whitesmoke;">อนุญาต</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Approved Students -->
+    <h2>อนุญาตแล้ว</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ชื่อสถานที่ฝึกงาน</th>
+                <th>ที่อยู่สถานที่ฝึกงาน</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>รหัสประจำตัวนักศึกษา</th>
+                <th>เบอร์โทรศัพท์</th>
+                <th>หน้าที่การทำงานของนักศึกษา</th>
+                <th>หลักฐานการทำงาน (ไฟล์ภาพ)</th>
+                <th>วันและเวลาทำการ</th>
+                <th>ดำเนินการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(student => { %>
+                <% if (student.isApproved == "true") { %>
+                    <tr>
+                        <td><%= student.companyName %></td>
+                        <td><%= student.companyAddress %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.lastName %></td>
+                        <td><%= student.studentID %></td>
+                        <td><%= student.phoneNumber %></td>
+                        <td><%= student.jobDetails %></td>
+                        <td>
+                            <div class="image-container">
+                                <img width="100" class="student-image" src="<%= student.image %>" alt="Student Image">
+                            </div>
+                        </td>
+                        <td><%= student.dateTime %></td>
+                        <td>
+                            <center style="color: whitesmoke; background-color: green;">อนุญาตแล้ว</center>
+                            <form action="/students/<%= student._id %>/deny" method="POST" style="display: inline;">
+                                <input type="hidden" name="isApproved" value="false">
+                                
+                                <button type="submit" style="background-color: red; color: whitesmoke;">ไม่อนุญาต</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Pending Approval -->
+    <h2>รอดำเนินการตรวจสอบ</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ชื่อสถานที่ฝึกงาน</th>
+                <th>ที่อยู่สถานที่ฝึกงาน</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>รหัสประจำตัวนักศึกษา</th>
+                <th>เบอร์โทรศัพท์</th>
+                <th>หน้าที่การทำงานของนักศึกษา</th>
+                <th>หลักฐานการทำงาน (ไฟล์ภาพ)</th>
+                <th>วันและเวลาทำการ</th>
+                <th>ดำเนินการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(student => { %>
+                <% if (student.isApproved == null) { %>
+                    <tr>
+                        <td><%= student.companyName %></td>
+                        <td><%= student.companyAddress %></td>
+                        <td><%= student.firstName %></td>
+                        <td><%= student.lastName %></td>
+                        <td><%= student.studentID %></td>
+                        <td><%= student.phoneNumber %></td>
+                        <td><%= student.jobDetails %></td>
+                        <td>
+                            
+                            <div class="image-container">
+                                <img width="100" class="student-image" src="<%= student.image %>" alt="Student Image">
+                            </div>
+                            
+                        </td>
+                        <td><%= student.dateTime %></td>
+                        
+                        
+                           
+                         <td>
+                            <center style="color: whitesmoke; background-color: red;">รอตรวจสอบ</center>
+                            <form action="/students/<%= student._id %>/approve" method="POST" style="display: inline;">
+                             <input type="hidden" name="isApproved" value="ตรวจสอบแล้ว">
+                             
+                             <button type="submit" style="background-color: green; color: whitesmoke;">อนุญาต</button>
+                             </form>
+                                <form action="/students/<%= student._id %>/deny" method="POST" style="display: inline;">
+                                    <input type="hidden" name="isApproved" value="ไม่ผ่านการตรวจสอบ">
+                                    
+                                    <button type="submit" style="background-color: red; color: whitesmoke;">ไม่อนุญาต</button>
+                                </form>
+                        </td>
+                        
+                    </tr>
+                <% } %>
+            <% }); %>
+        </tbody>
+    </table>
+
+    </div>
+
+    
+</body>
+</html>
