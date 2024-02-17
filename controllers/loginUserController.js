@@ -20,6 +20,8 @@ module.exports = (req, res) => {
                 if (match && user._id !== "65cf202d5c3b8db9dfdc7689") {
                     req.session.userId = user._id
                     res.redirect('/home')
+                }else {
+                    res.send('<script>alert("รหัสผ่านผิด กรุณากรอกใหม่!!"); window.location.href = "/login";</script>');
                 }
             })
         } else {
